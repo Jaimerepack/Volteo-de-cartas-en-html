@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card con Bulma</title>
+    <style>
+    @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+    h1 {
+      color: #ffd700;
+      font-size: 3rem;
+    }
+    body, html {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background-color: #674ea7;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    .card-container {
+      display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Espacio entre las cartas */
+        justify-content: center;
+        margin-top: 20px; /* espacio entre cartas y texto superior */
+    }
+
+    .card {
+    width: 200px;
+    height: 260px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    opacity: 1;
+    }
+
+    .card.flipped {
+        transform: rotateY(180deg); /* Aplica rotación al tener la clase "flipped" */
+    }
+
+    .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    padding: 0;
+    border: 2px solid #00d1b2;
+    border-radius: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    }
+
+    .front {
+        background-image: url('https://i.pinimg.com/736x/d5/55/d3/d555d352c36680e3fc1e93debfb97453.jpg');
+        background-size: 100% 100%;
+        background-position: center;
+        border-color:#121315 ;
+        image-resolution: cover;
+    }
+
+    .back {
+        background-color:#1D021B;
+        transform: rotateY(180deg) translateZ(1px);
+        border-color: #864883;
+        border-radius: 10px;
+    }
+
+    .header {
+        position: sticky;
+        top: 0;
+        background-color: #674ea7; /* Fondo para que se vea claro mientras te desplazas */
+        padding: 10px 20px;
+        width: 100vw; /* Asegura que ocupe todo el ancho de la ventana */
+        z-index: 10; /* Asegura que siempre esté por encima del resto */
+        border-bottom: 2px solid #ffd700;
+    }
+
+    /* Estilo para el mensaje */
+    #result {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #ffd700;
+    }
+    </style>
+    
+</head>
+<body>
+
+  <div class="header">
+    <h1>Lectura de Tarot Online</h1>
+    <p>Elige una carta para conocer tu mensaje.</p>
+    <div id="result"></div>
+  </div>
+  
+  <div class="card-container">
+    
+    <div class="card" onclick="revealCard(1)">
+        <div class="face back">
+         <img src="https://i.pinimg.com/736x/6d/13/3e/6d133e2435439dfc8f78171936a4f1d5.jpg" alt="" width="150">
+        </div>
+        <div class="face front">
+        </div>
+    </div>
+
+    <div class="card" onclick="revealCard(2)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/55/90/eb/5590eb3c56c6554770110e760fd4233f.jpg" alt="" width="145">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(3)">
+      <div class="face back">
+        <img src="https://lh3.google.com/u/0/d/1EIYO3re-ECY38uGqZlZOE6OEHTdZgJwJ=w1798-h983-iv1" alt="" width="135">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(4)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/3c/82/af/3c82af80ea4af6422718a027d3ae3ce8.jpg" alt="" width="130">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-container">
+    
+    <div class="card" onclick="revealCard(5)">
+        <div class="face back">
+         <img src="https://i.pinimg.com/736x/eb/7e/99/eb7e99e915734a1c8b1311a4f4a4a616.jpg" alt="" width="130">
+        </div>
+        <div class="face front">
+        </div>
+    </div>
+
+    <div class="card" onclick="revealCard(6)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/8d/b3/27/8db32760ec14122b372ab2fee8d648ff.jpg" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(7)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/89/15/dd/8915ddae528525c91d46f77b03839f92.jpg" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(8)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/c6/8f/e5/c68fe56649a094b7d4a036f71e9aadb7.jpg" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-container">
+    
+    <div class="card" onclick="revealCard(9)">
+        <div class="face back">
+         <img src="https://i.pinimg.com/736x/b0/e9/20/b0e9204442595b1f00b31022774ef389.jpg" alt="" width="130">
+        </div>
+        <div class="face front">
+        </div>
+    </div>
+
+    <div class="card" onclick="revealCard(10)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/97/44/23/9744230200c143c0f86cff4cc7d4c5d7.jpg" alt="" width="135">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(11)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/65/bb/ac/65bbacdc0119c649d358cb710f0d5059.jpg" alt="" width="130">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(12)">
+      <div class="face back">
+        <img src="https://lh3.google.com/u/0/d/1rogGn_oxm8-XzWkf3tInEVT8VsyEj4ri=w1030-h963-iv1" alt="" width="145">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-container">
+    
+    <div class="card" onclick="revealCard(13)">
+        <div class="face back">
+         <img src="https://i.pinimg.com/736x/d4/78/c1/d478c1634fe1547eb9e4ef5ea603502d.jpg" alt="" width="130">
+        </div>
+        <div class="face front">
+        </div>
+    </div>
+
+    <div class="card" onclick="revealCard(14)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/c3/27/e5/c327e50e625da365c2c05540b7570fe7.jpg" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(15)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/63/99/b1/6399b1cf35de86a4ef4e2c8b1f03d2a7.jpg" alt="" width="135">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(16)">
+      <div class="face back">
+        <img src="https://lh3.google.com/u/0/d/1LPXj0cF96h8xdt0bGeX_RkSCb2HCj5XU=w1030-h983-iv1" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-container">
+    
+    <div class="card" onclick="revealCard(17)">
+        <div class="face back">
+         <img src="https://i.pinimg.com/736x/0e/10/3f/0e103f8ff65317074eb45398253e75f2.jpg" alt="" width="130">
+        </div>
+        <div class="face front">
+        </div>
+    </div>
+
+    <div class="card" onclick="revealCard(18)">
+      <div class="face back">
+        <img src="https://lh3.google.com/u/0/d/10tzTV-j_NkDe9fhqONXz5bakLjt06MgX=w1030-h983-iv1" alt="" width="130">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(19)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/94/1e/3e/941e3eb2abefbe796f2e9b6213ad2e64.jpg" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+    <div class="card" onclick="revealCard(20)">
+      <div class="face back">
+        <img src="https://lh3.google.com/u/0/d/1lh57pQN585-7_EeTXuPNGfBwB6looChy=w1030-h983-iv1" alt="" width="140">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-container">
+    
+    <div class="card" onclick="revealCard(21)">
+        <div class="face back">
+         <img src="https://lh3.google.com/u/0/d/1LNN8aCXg86RI-qTJtDYoUvcaI-zowLka=w1030-h983-iv1" alt="" width="140">
+        </div>
+        <div class="face front">
+        </div>
+    </div>
+
+    <div class="card" onclick="revealCard(22)">
+      <div class="face back">
+        <img src="https://i.pinimg.com/736x/7b/fc/3e/7bfc3ed444d9ce8ba764bbe149153c16.jpg" alt="" width="130">
+      </div>
+      <div class="face front">
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    // Barajar las cartas antes de cargarlas en la página
+  document.addEventListener("DOMContentLoaded", function () {
+  const cardContainers = document.querySelectorAll(".card-container");
+  let allCards = [];
+
+  // Recoger todas las cartas de todos los contenedores
+  cardContainers.forEach(container => {
+    allCards = allCards.concat(Array.from(container.children)); // Agregar todas las cartas a un solo array
+  });
+
+  // Barajar el array de todas las cartas
+  allCards.sort(() => Math.random() - 0.5);
+
+  // Limpiar todos los contenedores
+  cardContainers.forEach(container => {
+    container.innerHTML = "";
+  });
+
+  // Repartir las cartas aleatorias en los contenedores
+  allCards.forEach((card, index) => {
+    const containerIndex = Math.floor(index / 4); // Ajusta según cuántas cartas quieras por contenedor
+    cardContainers[containerIndex].appendChild(card);
+  });
+
+  });
+
+    function revealCard(cardNumber) {
+      // Mensajes correspondientes a cada carta
+      const messages = [
+      "El Loco: Comienzos inesperados, aventuras y libertad. Sigue tu intuición sin temor al futuro.",
+      "El Mago: Poder, acción y manifestación. Todo lo que necesitas ya está a tu alcance.",
+      "La Sacerdotisa: Sabiduría oculta, secretos revelados y conexión con tu intuición más profunda.",
+      "La Emperatriz: Creatividad, fertilidad y abundancia. Confía en el poder de lo femenino y el crecimiento.",
+      "El Emperador: Estabilidad, liderazgo y estructura. Controla tu entorno con autoridad.",
+      "El Sumo Sacerdote: Tradición, enseñanzas y guía espiritual. Confía en la sabiduría compartida.",
+      "Los Enamorados: Decisiones importantes, amor y armonía. La elección correcta traerá unión.",
+      "El Carro: Triunfo, fuerza de voluntad y determinación. Supera cualquier obstáculo con control.",
+      "La Fuerza: Coraje, paciencia y autocontrol. La verdadera fuerza es la compasión.",
+      "El Ermitaño: Introspección, soledad y guía interna. Busca respuestas dentro de ti.",
+      "La Rueda de la Fortuna: Cambios inevitables, suerte y destino. Confía en el flujo de la vida.",
+      "La Justicia: Equilibrio, verdad y responsabilidad. Las acciones correctas traerán justicia.",
+      "El Colgado: Perspectiva, sacrificio y aceptación. Cambiar de punto de vista traerá claridad.",
+      "La Muerte: Transformación, finales y nuevos comienzos. Acepta el cambio como parte del ciclo.",
+      "La Templanza: Equilibrio, moderación y sanación. La paciencia traerá armonía.",
+      "El Diablo: Ataduras, deseos materiales y tentaciones. Rompe las cadenas de lo que te retiene.",
+      "La Torre: Destrucción, cambios súbitos y despertar. Lo que cae abre espacio para lo nuevo.",
+      "La Estrella: Esperanza, inspiración y renovación. Confía en la luz después de la tormenta.",
+      "La Luna: Misterios, ilusiones y sueños. No todo es lo que parece; sigue tu intuición.",
+      "El Sol: Éxito, vitalidad y claridad. La felicidad y la verdad están a tu favor.",
+      "El Juicio: Renacimiento, karma y redención. Es hora de liberarte y abrazar tu verdad.",
+      "El Mundo: Logro, realización y plenitud. Un ciclo se cierra con éxito."
+    ];
+
+      // Mostrar el mensaje correspondiente
+      document.getElementById('result').innerText = messages[cardNumber - 1];
+    }
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped'); // Alterna la clase "flipped" al hacer clic
+        });
+    });
+  </script>
+
+</body>
+</html>
